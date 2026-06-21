@@ -7,10 +7,20 @@ jobs:
       - uses: actions/checkout@v4
       - name: Setup Environment
         run: |
+          # تنظيف أي بقايا سابقة لضمان بيئة نظيفة
           rm -rf /home/runner/theos
+          rm -rf /home/runner/toolchain-linux
+          
+          # تحميل Theos الأساسي بدون تداخل
           git clone --recursive https://github.com/theos/theos.git /home/runner/theos
-          git clone https://github.com/theos/toolchain-linux.git /home/runner/theos/toolchain
+          
+          # تحميل الـ Toolchain في مسار منفصل تماماً
+          git clone https://github.com/theos/toolchain-linux.git /home/runner/toolchain-linux
       - name: Build
         run: |
+          # إعداد المتغيرات المطلوبة للبناء
           export THEOS=/home/runner/theos
+          export PATH=/home/runner/toolchain-linux/linux/iphone/bin:$PATH
+          
+          # تنفيذ عملية البناء
           make
