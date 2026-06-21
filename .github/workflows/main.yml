@@ -5,8 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Setup Theos
+        run: |
+          git clone --recursive https://github.com/theos/theos.git /home/runner/theos
       - name: Build
         run: |
-          sudo apt update
-          sudo apt install -y build-essential
+          export THEOS=/home/runner/theos
           make
