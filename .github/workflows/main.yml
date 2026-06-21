@@ -5,17 +5,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Setup Theos
+      - name: Setup Environment
         run: |
+          rm -rf /home/runner/theos
           git clone --recursive https://github.com/theos/theos.git /home/runner/theos
-      - name: Download SDK
-        run: |
-          rm -rf /home/runner/theos/sdks
           git clone https://github.com/theos/sdks.git /home/runner/theos/sdks
-      - name: Install Toolchain
-        run: |
           git clone https://github.com/theos/toolchain-linux.git /home/runner/theos/toolchain
-          mv /home/runner/theos/toolchain/linux /home/runner/theos/toolchain/linux
       - name: Build
         run: |
           export THEOS=/home/runner/theos
