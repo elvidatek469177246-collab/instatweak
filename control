@@ -1,0 +1,7 @@
+Package: com.baraa.instastaticip
+Name: InstagramStaticIP
+Depends: mobilesubstrate
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Change Instagram IP and show Alert
+Maintainer: Baraa
