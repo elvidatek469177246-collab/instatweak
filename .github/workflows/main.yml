@@ -12,6 +12,10 @@ jobs:
         run: |
           rm -rf /home/runner/theos/sdks
           git clone https://github.com/theos/sdks.git /home/runner/theos/sdks
+      - name: Install Toolchain
+        run: |
+          git clone https://github.com/theos/toolchain-linux.git /home/runner/theos/toolchain
+          mv /home/runner/theos/toolchain/linux /home/runner/theos/toolchain/linux
       - name: Build
         run: |
           export THEOS=/home/runner/theos
