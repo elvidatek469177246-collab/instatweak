@@ -9,7 +9,6 @@ jobs:
         run: |
           rm -rf /home/runner/theos
           git clone --recursive https://github.com/theos/theos.git /home/runner/theos
-          git clone https://github.com/theos/sdks.git /home/runner/theos/sdks
           git clone https://github.com/theos/toolchain-linux.git /home/runner/theos/toolchain
       - name: Build
         run: |
